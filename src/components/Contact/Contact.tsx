@@ -4,6 +4,7 @@
 
 import { useLanguage } from '../../i18n'
 import { Icon, type IconName } from '../Icon'
+import SectionHeader from '../SectionHeader/SectionHeader'
 import styles from './Contact.module.css'
 
 type ContactItem = {
@@ -45,9 +46,8 @@ export default function Contact() {
   return (
     <section id="contact" className={styles.section}>
       <div className={styles.container}>
-        <p className={styles.kicker} data-reveal>
-          // {t.contact.kicker}
-        </p>
+        <SectionHeader index="05" comment={t.contact.kicker} file="contact.ts" />
+
         <h2 className={styles.title} data-reveal style={{ animationDelay: '60ms' }}>
           {t.contact.title}
         </h2>

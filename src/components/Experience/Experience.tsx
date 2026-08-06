@@ -4,6 +4,7 @@
 
 import { useLanguage } from '../../i18n'
 import { experience } from '../../data/experience'
+import SectionHeader from '../SectionHeader/SectionHeader'
 import styles from './Experience.module.css'
 
 export default function Experience() {
@@ -12,9 +13,8 @@ export default function Experience() {
   return (
     <section id="experience" className={styles.section}>
       <div className={styles.container}>
-        <p className={styles.kicker} data-reveal>
-          // {t.experience.kicker}
-        </p>
+        <SectionHeader index="02" comment={t.experience.kicker} file="career.ts" />
+
         <h2 className={styles.title} data-reveal style={{ animationDelay: '60ms' }}>
           {t.experience.title}
         </h2>

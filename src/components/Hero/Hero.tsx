@@ -3,16 +3,19 @@
    ============================================================ */
 
 import { useLanguage } from '../../i18n'
+import { useParallax } from '../../hooks/useParallax'
 import { Icon } from '../Icon'
 import Particles from './Particles'
 import styles from './Hero.module.css'
 
 export default function Hero() {
   const { t } = useLanguage()
+  const bgRef = useParallax<HTMLDivElement>()
+  const termWrapRef = useParallax<HTMLDivElement>()
 
   return (
     <section id="home" className={styles.hero}>
-      <div className={styles.bg} aria-hidden="true">
+      <div className={styles.bg} ref={bgRef} aria-hidden="true">
         <div className={styles.grid} />
         <div className={styles.glow} />
         <Particles />
@@ -28,6 +31,7 @@ export default function Hero() {
 
           <h1 className={styles.name}>
             Davi <span className={styles.nameAccent}>Batista</span>
+            <span className={styles.nameCursor} aria-hidden="true" />
           </h1>
 
           <p className={styles.role}>{t.hero.role}</p>
@@ -55,35 +59,38 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className={styles.term} aria-hidden="true">
-          <div className={styles.termBar}>
-            <span className={`${styles.termDot} ${styles.termDotRed}`} />
-            <span className={`${styles.termDot} ${styles.termDotYellow}`} />
-            <span className={`${styles.termDot} ${styles.termDotGreen}`} />
-            <span className={styles.termTitle}>davi@portfolio: ~</span>
-          </div>
-          <div className={styles.termBody}>
-            <p>
-              <span className={styles.prompt}>$</span> whoami
-            </p>
-            <p className={styles.output}>davi_batista</p>
-            <p>
-              <span className={styles.prompt}>$</span> cat profile.txt
-            </p>
-            <p className={styles.output}>{t.hero.terminal.profile}</p>
-            <p>
-              <span className={styles.prompt}>$</span> ./status --current
-            </p>
-            <p className={styles.output}>{t.hero.terminal.status}</p>
-            <p>
-              <span className={styles.prompt}>$</span>
-              <span className={styles.cursor} />
-            </p>
+        <div className={styles.termWrap} ref={termWrapRef}>
+          <div className={styles.term} aria-hidden="true">
+            <div className={styles.termBar}>
+              <span className={`${styles.termDot} ${styles.termDotRed}`} />
+              <span className={`${styles.termDot} ${styles.termDotYellow}`} />
+              <span className={`${styles.termDot} ${styles.termDotGreen}`} />
+              <span className={styles.termTitle}>davi@portfolio: ~</span>
+            </div>
+            <div className={styles.termBody}>
+              <p>
+                <span className={styles.prompt}>$</span> whoami
+              </p>
+              <p className={styles.output}>davi_batista</p>
+              <p>
+                <span className={styles.prompt}>$</span> cat profile.txt
+              </p>
+              <p className={styles.output}>{t.hero.terminal.profile}</p>
+              <p>
+                <span className={styles.prompt}>$</span> ./status --current
+              </p>
+              <p className={styles.output}>{t.hero.terminal.status}</p>
+              <p>
+                <span className={styles.prompt}>$</span>
+                <span className={styles.cursor} />
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
       <a href="#about" className={styles.scrollHint} aria-label={t.hero.scrollHint}>
+        <span className={styles.hintPrompt}>$</span>
         <span>{t.hero.scrollHint}</span>
         <Icon name="arrow-down" size={15} />
       </a>

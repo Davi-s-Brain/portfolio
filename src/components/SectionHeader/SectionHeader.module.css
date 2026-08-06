@@ -1,0 +1,56 @@
+/* ============================================================
+   SectionHeader — estilos
+   ============================================================ */
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.kicker {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55em;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.comment {
+  color: var(--accent);
+}
+
+.index {
+  color: var(--accent);
+  opacity: 0.75;
+  font-size: 0.72em;
+}
+
+.file {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.3em 0.7em;
+  white-space: nowrap;
+}
+
+.file svg {
+  color: var(--accent);
+}
+
+@media (max-width: 560px) {
+  .file {
+    display: none;
+  }
+}

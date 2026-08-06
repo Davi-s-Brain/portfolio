@@ -13,20 +13,13 @@
   margin-inline: auto;
 }
 
-.head {
+.titleRow {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: var(--space-4);
   flex-wrap: wrap;
-  margin-bottom: var(--space-10);
-}
-
-.kicker {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--accent);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-8);
 }
 
 .title {
@@ -64,6 +57,7 @@
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
@@ -71,16 +65,42 @@
   background: var(--surface);
   border-radius: var(--radius-md);
   padding: var(--space-6);
+  /* Tilt 3D: vars --rx/--ry definidas pelo hook useCardTilt.
+     O hover mantém o translateY e soma a rotação. */
+  transform-style: preserve-3d;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
   transition:
     transform var(--transition-slow),
     border-color var(--transition-slow),
     box-shadow var(--transition-slow);
+  will-change: transform;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))
+    translateY(-5px);
   border-color: var(--accent);
   box-shadow: var(--shadow-accent);
+}
+
+/* Glow spotlight que segue o cursor (vars --gx/--gy) */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    150px circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(233, 69, 96, 0.16),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+
+.card:hover::after {
+  opacity: 1;
 }
 
 .cardTop {

@@ -3,6 +3,7 @@
    ============================================================ */
 
 import { useLanguage } from '../../i18n'
+import SectionHeader from '../SectionHeader/SectionHeader'
 import styles from './Skills.module.css'
 
 export default function Skills() {
@@ -11,9 +12,8 @@ export default function Skills() {
   return (
     <section id="skills" className={styles.section}>
       <div className={styles.container}>
-        <p className={styles.kicker} data-reveal>
-          // {t.skills.kicker}
-        </p>
+        <SectionHeader index="03" comment={t.skills.kicker} file="skills.ts" />
+
         <h2 className={styles.title} data-reveal style={{ animationDelay: '60ms' }}>
           {t.skills.title}
         </h2>

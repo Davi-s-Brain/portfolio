@@ -3,6 +3,7 @@
    ============================================================ */
 
 import { useLanguage } from '../../i18n'
+import SectionHeader from '../SectionHeader/SectionHeader'
 import styles from './About.module.css'
 
 export default function About() {
@@ -11,9 +12,8 @@ export default function About() {
   return (
     <section id="about" className={styles.section}>
       <div className={styles.container}>
-        <p className={styles.kicker} data-reveal>
-          // {t.about.kicker}
-        </p>
+        <SectionHeader index="01" comment={t.about.kicker} file="about.ts" />
+
         <h2 className={styles.title} data-reveal style={{ animationDelay: '60ms' }}>
           {t.about.title}
         </h2>

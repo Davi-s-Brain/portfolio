@@ -10,6 +10,7 @@ export type IconName =
   | 'mail'
   | 'map-pin'
   | 'folder'
+  | 'file'
   | 'external'
   | 'arrow-down'
   | 'menu'
@@ -55,6 +56,16 @@ const icons: Record<IconName, IconDef> = {
     viewBox: '0 0 24 24',
     type: 'stroke',
     children: <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2v11z" />,
+  },
+  file: {
+    viewBox: '0 0 24 24',
+    type: 'stroke',
+    children: (
+      <>
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+      </>
+    ),
   },
   external: {
     viewBox: '0 0 24 24',

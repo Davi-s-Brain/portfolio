@@ -13,19 +13,12 @@
   margin-inline: auto;
 }
 
-.kicker {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--accent);
-  margin-bottom: var(--space-3);
-}
-
 .title {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 4.5vw, 2.6rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-8);
 }
 
 .grid {
