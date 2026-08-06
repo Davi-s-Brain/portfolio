@@ -1,0 +1,96 @@
+/* ============================================================
+   Contact — estilos
+   ============================================================ */
+
+.section {
+  position: relative;
+  padding-block: var(--section-pad);
+  scroll-margin-top: var(--header-h);
+}
+
+.container {
+  width: min(var(--container), 100% - 2 * var(--space-6));
+  margin-inline: auto;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: var(--space-3);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+}
+
+.intro {
+  color: var(--text-muted);
+  max-width: 32rem;
+  margin-bottom: var(--space-10);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.card {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-accent);
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  text-decoration: none;
+}
+
+.iconBox {
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--accent);
+  margin-bottom: var(--space-3);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.value {
+  color: var(--text);
+  font-size: 0.94rem;
+  font-weight: 500;
+  word-break: break-word;
+  transition: color var(--transition);
+}
+
+.cardLink:hover .value {
+  color: var(--accent);
+}

@@ -1,0 +1,199 @@
+/* ============================================================
+   Experience — estilos (timeline)
+   ============================================================ */
+
+.section {
+  position: relative;
+  padding-block: var(--section-pad);
+  scroll-margin-top: var(--header-h);
+}
+
+.container {
+  width: min(var(--container), 100% - 2 * var(--space-6));
+  margin-inline: auto;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: var(--space-3);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-10);
+}
+
+.timeline {
+  position: relative;
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--secondary));
+  opacity: 0.45;
+}
+
+.item {
+  position: relative;
+  padding-left: var(--space-8);
+  padding-bottom: var(--space-6);
+}
+
+.item:last-child {
+  padding-bottom: 0;
+}
+
+.marker {
+  position: absolute;
+  left: -5px;
+  top: 0.4rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+/* ---- Card ---- */
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: var(--space-5) var(--space-6);
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+
+.role {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.company {
+  color: var(--accent);
+  font-size: 0.88rem;
+  margin-top: 2px;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.45rem;
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+  padding: 0.3em 0.8em;
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 14px var(--accent-glow);
+}
+
+.period {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+/* ---- Destaques ---- */
+.list {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: var(--space-5);
+}
+
+.highlight {
+  position: relative;
+  padding-left: 1.3em;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.highlight::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* ---- Tags ---- */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 0.3em 0.7em;
+  border-radius: var(--radius-sm);
+  transition:
+    color var(--transition),
+    border-color var(--transition);
+}
+
+.tag:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+@media (max-width: 560px) {
+  .cardHeader {
+    flex-direction: column;
+  }
+
+  .meta {
+    align-items: flex-start;
+  }
+
+  .item {
+    padding-left: var(--space-6);
+  }
+
+  .card {
+    padding: var(--space-5);
+  }
+}

@@ -1,0 +1,48 @@
+/* ============================================================
+   Footer — estilos
+   ============================================================ */
+
+.footer {
+  border-top: 1px solid var(--border);
+  padding-block: var(--space-8);
+}
+
+.container {
+  width: min(var(--container), 100% - 2 * var(--space-6));
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.note {
+  color: var(--text-faint);
+  font-size: 0.85rem;
+}
+
+.socials {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.social {
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition:
+    color var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.social:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
