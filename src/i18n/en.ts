@@ -98,7 +98,6 @@ export const en: Dict = {
     emailLabel: 'Email',
     linkedinLabel: 'LinkedIn',
     githubLabel: 'GitHub',
-    phoneLabel: 'Phone',
     locationLabel: 'Location',
     locationValue: 'São Paulo, Brazil',
   },

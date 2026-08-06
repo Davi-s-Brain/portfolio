@@ -11,12 +11,21 @@ export default function Skills() {
   return (
     <section id="skills" className={styles.section}>
       <div className={styles.container}>
-        <p className={styles.kicker}>// {t.skills.kicker}</p>
-        <h2 className={styles.title}>{t.skills.title}</h2>
+        <p className={styles.kicker} data-reveal>
+          // {t.skills.kicker}
+        </p>
+        <h2 className={styles.title} data-reveal style={{ animationDelay: '60ms' }}>
+          {t.skills.title}
+        </h2>
 
         <div className={styles.grid}>
-          {t.skills.groups.map((group) => (
-            <article key={group.title} className={styles.card}>
+          {t.skills.groups.map((group, index) => (
+            <article
+              key={group.title}
+              className={styles.card}
+              data-reveal
+              style={{ animationDelay: `${index * 70}ms` }}
+            >
               <h3 className={styles.cardTitle}>{group.title}</h3>
               <ul className={styles.list}>
                 {group.items.map((item) => (

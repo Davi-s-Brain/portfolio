@@ -4,6 +4,7 @@
 
 import { useLanguage } from '../../i18n'
 import { Icon } from '../Icon'
+import Particles from './Particles'
 import styles from './Hero.module.css'
 
 export default function Hero() {
@@ -14,6 +15,7 @@ export default function Hero() {
       <div className={styles.bg} aria-hidden="true">
         <div className={styles.grid} />
         <div className={styles.glow} />
+        <Particles />
         <div className={styles.noise} />
       </div>
 

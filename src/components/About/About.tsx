@@ -11,13 +11,24 @@ export default function About() {
   return (
     <section id="about" className={styles.section}>
       <div className={styles.container}>
-        <p className={styles.kicker}>// {t.about.kicker}</p>
-        <h2 className={styles.title}>{t.about.title}</h2>
+        <p className={styles.kicker} data-reveal>
+          // {t.about.kicker}
+        </p>
+        <h2 className={styles.title} data-reveal style={{ animationDelay: '60ms' }}>
+          {t.about.title}
+        </h2>
 
         <div className={styles.grid}>
-          <p className={styles.body}>{t.about.body}</p>
+          <p className={styles.body} data-reveal style={{ animationDelay: '120ms' }}>
+            {t.about.body}
+          </p>
 
-          <aside className={styles.panel} aria-label={t.about.currentLabel}>
+          <aside
+            className={styles.panel}
+            aria-label={t.about.currentLabel}
+            data-reveal
+            style={{ animationDelay: '220ms' }}
+          >
             <p className={styles.panelLabel}>{t.about.currentLabel}</p>
             <p className={styles.panelRole}>{t.about.currentRole}</p>
             <p className={styles.panelCompany}>{t.about.currentCompany}</p>

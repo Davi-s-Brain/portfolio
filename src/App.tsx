@@ -10,8 +10,11 @@ import Skills from './components/Skills/Skills'
 import Projects from './components/Projects/Projects'
 import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
+import { useRevealOnScroll } from './hooks/useRevealOnScroll'
 
 export default function App() {
+  useRevealOnScroll()
+
   return (
     <>
       <Header />

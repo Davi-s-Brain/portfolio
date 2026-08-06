@@ -13,7 +13,7 @@ export default function Projects() {
   return (
     <section id="projects" className={styles.section}>
       <div className={styles.container}>
-        <div className={styles.head}>
+        <div className={styles.head} data-reveal>
           <div>
             <p className={styles.kicker}>// {t.projects.kicker}</p>
             <h2 className={styles.title}>{t.projects.title}</h2>
@@ -30,8 +30,13 @@ export default function Projects() {
         </div>
 
         <div className={styles.grid}>
-          {projects.map((project) => (
-            <article key={project.id} className={styles.card}>
+          {projects.map((project, index) => (
+            <article
+              key={project.id}
+              className={styles.card}
+              data-reveal
+              style={{ animationDelay: `${index * 70}ms` }}
+            >
               <div className={styles.cardTop}>
                 <span className={styles.folder} aria-hidden="true">
                   <Icon name="folder" size={22} />

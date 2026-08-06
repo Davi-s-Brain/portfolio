@@ -94,7 +94,6 @@ export const pt = {
     emailLabel: 'E-mail',
     linkedinLabel: 'LinkedIn',
     githubLabel: 'GitHub',
-    phoneLabel: 'Telefone',
     locationLabel: 'Localização',
     locationValue: 'São Paulo, SP',
   },

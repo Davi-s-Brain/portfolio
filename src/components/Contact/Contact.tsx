@@ -36,12 +36,6 @@ export default function Contact() {
       icon: 'github',
     },
     {
-      label: t.contact.phoneLabel,
-      value: '(11) 95498-7463',
-      href: 'tel:+5511954987463',
-      icon: 'phone',
-    },
-    {
       label: t.contact.locationLabel,
       value: t.contact.locationValue,
       icon: 'map-pin',
@@ -51,12 +45,18 @@ export default function Contact() {
   return (
     <section id="contact" className={styles.section}>
       <div className={styles.container}>
-        <p className={styles.kicker}>// {t.contact.kicker}</p>
-        <h2 className={styles.title}>{t.contact.title}</h2>
-        <p className={styles.intro}>{t.contact.intro}</p>
+        <p className={styles.kicker} data-reveal>
+          // {t.contact.kicker}
+        </p>
+        <h2 className={styles.title} data-reveal style={{ animationDelay: '60ms' }}>
+          {t.contact.title}
+        </h2>
+        <p className={styles.intro} data-reveal style={{ animationDelay: '120ms' }}>
+          {t.contact.intro}
+        </p>
 
         <ul className={styles.grid}>
-          {items.map((item) => {
+          {items.map((item, index) => {
             const isExternal = item.href?.startsWith('http') ?? false
             const content = (
               <>
@@ -69,7 +69,12 @@ export default function Contact() {
             )
 
             return (
-              <li key={item.label} className={styles.card}>
+              <li
+                key={item.label}
+                className={styles.card}
+                data-reveal
+                style={{ animationDelay: `${index * 60}ms` }}
+              >
                 {item.href ? (
                   <a
                     className={styles.cardLink}

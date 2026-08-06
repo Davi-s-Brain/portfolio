@@ -12,12 +12,21 @@ export default function Experience() {
   return (
     <section id="experience" className={styles.section}>
       <div className={styles.container}>
-        <p className={styles.kicker}>// {t.experience.kicker}</p>
-        <h2 className={styles.title}>{t.experience.title}</h2>
+        <p className={styles.kicker} data-reveal>
+          // {t.experience.kicker}
+        </p>
+        <h2 className={styles.title} data-reveal style={{ animationDelay: '60ms' }}>
+          {t.experience.title}
+        </h2>
 
         <ol className={styles.timeline}>
-          {experience.map((item) => (
-            <li key={item.id} className={styles.item}>
+          {experience.map((item, index) => (
+            <li
+              key={item.id}
+              className={styles.item}
+              data-reveal
+              style={{ animationDelay: `${index * 90}ms` }}
+            >
               <span className={styles.marker} aria-hidden="true" />
               <article className={styles.card}>
                 <header className={styles.cardHeader}>
