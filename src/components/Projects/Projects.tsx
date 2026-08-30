@@ -22,6 +22,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       data-reveal
       style={{ animationDelay: `${index * 70}ms` }}
     >
+      <span className={styles.cardNum} aria-hidden="true">
+        {String(index + 1).padStart(2, '0')}
+      </span>
+
       <div className={styles.cardTop}>
         <span className={styles.folder} aria-hidden="true">
           <Icon name="folder" size={22} />

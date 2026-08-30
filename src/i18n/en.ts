@@ -22,25 +22,27 @@ export const en: Dict = {
     current: 'Language',
   },
   hero: {
-    kicker: "console.log('hello, world!')",
+    kicker: '// open to opportunities',
     role: 'IT Analyst — Backend Java',
-    student: 'Information Systems undergraduate at USP (SP)',
     tagline:
       'Turning problems into scalable solutions with Java backend, data and automation. Curious by nature, rigorous by craft.',
     ctaProjects: 'View projects',
     ctaContact: 'Contact',
     github: 'GitHub',
     githubLabel: 'GitHub profile',
-    terminal: {
-      profile: 'backend java · devops · data',
-      status: 'it analyst @ f1rst (santander) · usp',
-    },
-    scrollHint: 'scroll',
+    ticker: ['backend java', 'devops', 'automation', 'data', 'react', 'typescript'],
+    metaLocation: 'base',
+    metaFormation: 'study',
+    formation: 'USP · Information Systems',
   },
   about: {
     kicker: 'about',
     title: 'About me',
-    body: 'Information Systems undergraduate at USP and IT Analyst at F1RST Digital Services (Santander), working with Java backend on the regulatory investment portability project. Previously in DevOps at PagBank, building automations that impacted over 500 developers, and in fullstack development with React, Node.js and TypeScript at Instituto Taqtile.',
+    body: [
+      'IT Analyst at F1RST Digital Services (Santander), building Java backend on the regulatory investment portability project.',
+      'In DevOps at PagBank, I automated flows that impacted over 500 developers; at Instituto Taqtile I built fullstack products with React, Node.js and TypeScript.',
+      'Information Systems undergraduate at USP (SP).',
+    ],
     currentLabel: '// currently',
     currentRole: 'IT Analyst — Backend Java',
     currentCompany: 'F1RST Digital Services (Santander)',
@@ -100,8 +102,5 @@ export const en: Dict = {
     githubLabel: 'GitHub',
     locationLabel: 'Location',
     locationValue: 'São Paulo, Brazil',
-  },
-  footer: {
-    built: 'Built with React & Vite',
   },
 }

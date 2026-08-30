@@ -1,5 +1,7 @@
 /* ============================================================
    Hero — estilos
+   Wordmark editorial + lanterna de cursor
+   Motion: só transform/opacity, easing cubic-bezier(0.22, 1, 0.36, 1)
    ============================================================ */
 
 .hero {
@@ -17,36 +19,26 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  /* Parallax sutil: o fundo se move contra o mouse (vars definidas
-     pelo hook useParallax; default 0.5 = sem deslocamento). */
-  transform: translate3d(
-    calc((var(--mx, 0.5) - 0.5) * -16px),
-    calc((var(--my, 0.5) - 0.5) * -12px),
-    0
-  );
-  transition: transform 500ms ease-out;
 }
 
-.grid {
+/* Wash respirando — 2 radiais da marca (primary/accent), nunca
+   gradiente genérico roxo-azul. Opacidade + escala, sempre lento. */
+.wash {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 48px 48px;
-  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 40%, #000 30%, transparent 75%);
-  mask-image: radial-gradient(ellipse 85% 65% at 50% 40%, #000 30%, transparent 75%);
+  background:
+    radial-gradient(42rem 30rem at 12% 88%, rgba(233, 69, 96, 0.14), transparent 62%),
+    radial-gradient(46rem 32rem at 88% 8%, rgba(74, 222, 128, 0.1), transparent 62%);
+  animation: breathe 9s ease-in-out infinite alternate;
 }
 
-.glow {
+.dots {
   position: absolute;
-  top: -22%;
-  right: -12%;
-  width: 62vw;
-  height: 62vw;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(233, 69, 96, 0.16), transparent 62%);
-  filter: blur(6px);
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 42%, #000 24%, transparent 78%);
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 42%, #000 24%, transparent 78%);
 }
 
 .noise {
@@ -56,93 +48,142 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
 }
 
-/* ---- Conteúdo ---- */
-.container {
+/* ---- Layout principal ---- */
+.content {
   position: relative;
   z-index: 1;
   width: min(var(--container), 100% - 2 * var(--space-6));
   margin-inline: auto;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: var(--space-8);
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  padding-block: var(--space-12);
+  gap: var(--space-9);
+  /* respiro para o ticker absoluto da base */
+  padding-bottom: clamp(4rem, 8vw, 6rem);
 }
 
+.copy {
+  min-width: 0;
+}
+
+/* ---- Kicker: disponibilidade ---- */
 .kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--accent);
-  margin-bottom: var(--space-4);
-  opacity: 0;
-  animation: rise 600ms ease-out 80ms forwards;
-}
-
-.kickerArrow {
-  margin-right: 0.5em;
-  opacity: 0.7;
-}
-
-.name {
-  font-family: var(--font-display);
-  font-size: clamp(3.2rem, 10vw, 6.5rem);
-  font-weight: 700;
-  line-height: 0.98;
-  letter-spacing: -0.03em;
+  font-size: var(--font-scale-2);
+  color: var(--text-muted);
   margin-bottom: var(--space-5);
-  text-shadow: 0 0 46px rgba(233, 69, 96, 0.22);
   opacity: 0;
-  animation: rise 600ms ease-out 160ms forwards;
+  animation: rise 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.nameAccent {
+.openDot {
+  position: relative;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.openDot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  animation: ring 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+/* ---- Wordmark em escala de pôster ---- */
+.name {
+  margin-bottom: var(--space-5);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.nameBlock {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3.5rem, 13vw, 10rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  /* entrada: settle (rise + leve zoom-out), sem stagger de caracteres */
+  animation: settle 850ms cubic-bezier(0.22, 1, 0.36, 1) 120ms backwards;
+}
+
+.nameText,
+.nameGlow {
+  display: block;
+}
+
+.nameText {
+  color: var(--text);
+  text-shadow: 0 0 60px rgba(233, 69, 96, 0.12);
+}
+
+.nameLine {
+  display: block;
+}
+
+/* Camada duotone revelada pela "lanterna" do cursor.
+   Mask radial em --mx/--my (0..1 normalizado pela janela, do
+   useParallax) → o gradiente da marca segue o ponteiro. */
+.nameGlow {
+  position: absolute;
+  inset: 0;
   color: transparent;
-  background: linear-gradient(100deg, var(--accent) 10%, #ff8a5c 90%);
+  background: linear-gradient(100deg, var(--primary) 0%, var(--accent) 100%);
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-mask-image: radial-gradient(
+    22rem circle at calc(var(--mx, 0.5) * 100%) calc(var(--my, 0.5) * 100%),
+    #000 0%,
+    rgba(0, 0, 0, 0.55) 40%,
+    transparent 62%
+  );
+  mask-image: radial-gradient(
+    22rem circle at calc(var(--mx, 0.5) * 100%) calc(var(--my, 0.5) * 100%),
+    #000 0%,
+    rgba(0, 0, 0, 0.55) 40%,
+    transparent 62%
+  );
 }
 
-/* Cursor de terminal no fim do nome — une tipografia e vibe dev */
-.nameCursor {
-  display: inline-block;
-  width: 0.09em;
-  height: 0.82em;
-  margin-left: 0.08em;
-  background: var(--accent);
-  vertical-align: baseline;
-  animation: blink 1.1s steps(2, start) infinite;
-}
-
+/* ---- Role + tagline ---- */
 .role {
   font-family: var(--font-mono);
-  font-size: clamp(1rem, 2.4vw, 1.22rem);
+  font-size: var(--font-scale-3);
   font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--text);
   margin-bottom: var(--space-2);
   opacity: 0;
-  animation: rise 600ms ease-out 240ms forwards;
-}
-
-.role::before {
-  content: '▸ ';
-  color: var(--accent);
-}
-
-.student {
-  color: var(--text-muted);
-  font-size: 1rem;
-  margin-bottom: var(--space-5);
-  opacity: 0;
-  animation: rise 600ms ease-out 320ms forwards;
+  animation: rise 600ms cubic-bezier(0.22, 1, 0.36, 1) 480ms forwards;
 }
 
 .tagline {
   color: var(--text-muted);
   max-width: 34rem;
-  font-size: 0.98rem;
+  font-size: var(--font-scale-4);
   margin-bottom: var(--space-6);
   opacity: 0;
-  animation: rise 600ms ease-out 400ms forwards;
+  animation: rise 600ms cubic-bezier(0.22, 1, 0.36, 1) 620ms forwards;
 }
 
 /* ---- CTAs ---- */
@@ -151,7 +192,7 @@
   flex-wrap: wrap;
   gap: var(--space-3);
   opacity: 0;
-  animation: rise 600ms ease-out 480ms forwards;
+  animation: rise 600ms cubic-bezier(0.22, 1, 0.36, 1) 740ms forwards;
 }
 
 .btn {
@@ -160,8 +201,8 @@
   gap: 0.5em;
   padding: 0.7rem 1.3rem;
   border-radius: var(--radius-sm);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--font-scale-4);
+  font-weight: var(--font-weight-semi);
   text-decoration: none;
   border: 1px solid transparent;
   transition:
@@ -175,12 +216,12 @@
 .btnPrimary {
   background: var(--accent);
   color: #fff;
-  box-shadow: 0 6px 20px rgba(233, 69, 96, 0.35);
+  box-shadow: var(--shadow-accent);
 }
 
 .btnPrimary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(233, 69, 96, 0.5);
+  box-shadow: 0 10px 28px rgba(74, 222, 128, 0.4);
 }
 
 .btnGhost {
@@ -195,89 +236,167 @@
   transform: translateY(-2px);
 }
 
-/* ---- Terminal decorativo ---- */
-.termWrap {
-  /* Parallax no terminal: leve deslocamento no mesmo sentido do mouse */
-  transform: translate3d(
-    calc((var(--mx, 0.5) - 0.5) * 20px),
-    calc((var(--my, 0.5) - 0.5) * 14px),
-    0
-  );
-  transition: transform 500ms ease-out;
-}
-
-.term {
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-strong);
-  background: var(--bg-deep);
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(14px);
-  animation: termIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 350ms forwards;
-}
-
-.termBar {
+/* ---- Rail: badge circular rotativo + meta ---- */
+.rail {
+  align-self: end;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.65rem 1rem;
-  background: rgba(255, 255, 255, 0.04);
-  border-bottom: 1px solid var(--border);
+  gap: var(--space-6);
+  padding-bottom: var(--space-9);
 }
 
-.termDot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+.badge {
+  position: relative;
+  width: clamp(7.5rem, 11vw, 9.5rem);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  animation: rise 700ms cubic-bezier(0.22, 1, 0.36, 1) 820ms forwards;
 }
 
-.termDotRed {
-  background: #ff5f57;
+.badgeSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: spin 18s linear infinite;
 }
 
-.termDotYellow {
-  background: #febc2e;
-}
-
-.termDotGreen {
-  background: #28c840;
-}
-
-.termTitle {
-  margin-inline: auto;
+.badgeText {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 12.5px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  fill: var(--text-muted);
+}
+
+.badgeCenter {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: var(--font-scale-3);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.badgeCenterUnderscore {
+  animation: blink 1.2s steps(2, start) infinite;
+}
+
+.meta {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.metaRow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: baseline;
+}
+
+.metaLabel {
+  font-family: var(--font-mono);
+  font-size: var(--font-scale-1);
   color: var(--text-faint);
 }
 
-.termBody {
-  padding: 1.35rem 1.35rem 1.6rem;
+.metaValue {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
-  line-height: 2;
+  font-size: var(--font-scale-2);
   color: var(--text-muted);
+  white-space: nowrap;
 }
 
-.prompt {
+/* ---- Ticker contínuo na base ---- */
+.marquee {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  border-top: 1px solid var(--border);
+  background: rgba(13, 13, 23, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  overflow: hidden;
+  padding-block: 0.85rem;
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  animation: marquee 26s linear infinite;
+}
+
+/* Pausa ao passar o mouse — affordance, nunca interrompe a leitura */
+.marquee:hover .marqueeTrack {
+  animation-play-state: paused;
+}
+
+.marqueeItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-right: 1.1rem;
+  font-family: var(--font-mono);
+  font-size: var(--font-scale-2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.marqueeSep {
   color: var(--accent);
-  font-weight: 600;
-  margin-right: 0.55em;
+  font-size: 0.8em;
 }
 
-.output {
-  padding-left: 1.6em;
-  color: var(--text);
+/* ---- Keyframes ---- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.cursor {
-  display: inline-block;
-  width: 0.55em;
-  height: 1.1em;
-  background: var(--accent);
-  vertical-align: text-bottom;
-  margin-left: 0.4em;
-  animation: blink 1.1s steps(2, start) infinite;
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(42px) scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes breathe {
+  from {
+    opacity: 0.82;
+    transform: scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  70%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
 }
 
 @keyframes blink {
@@ -286,82 +405,75 @@
   }
 }
 
-/* ---- Hint de scroll ---- */
-.scrollHint {
-  position: absolute;
-  left: 50%;
-  bottom: var(--space-6);
-  transform: translateX(-50%);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5em;
-  z-index: 1;
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-  text-decoration: none;
-  padding: var(--space-2) var(--space-3);
-  animation: bob 2.4s ease-in-out infinite;
-  transition: color var(--transition);
-}
-
-.hintPrompt {
-  color: var(--accent);
-  font-weight: 600;
-}
-
-.scrollHint:hover {
-  color: var(--accent);
-}
-
-@keyframes bob {
-  0%,
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(6px);
-  }
-}
-
-/* ---- Animações de entrada ---- */
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
+@keyframes spin {
   to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: rotate(360deg);
   }
 }
 
-@keyframes termIn {
-  from {
-    opacity: 0;
-    transform: translateY(14px) scale(0.98);
-  }
+@keyframes marquee {
   to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateX(-50%);
+  }
+}
+
+/* Sem ponteiro fino (touch): sem "lanterna" — o degradê fica
+   inteiro visível no nome, em vez de um holofote fixo no centro */
+@media (hover: none) {
+  .nameGlow {
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 }
 
 /* ---- Responsivo ---- */
-@media (max-width: 860px) {
-  .container {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-    padding-block: var(--space-10);
+@media (max-width: 1024px) {
+  .rail {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .kicker {
+    font-size: var(--font-scale-1);
   }
 
-  .termWrap {
-    max-width: 28rem;
+  .btn {
+    padding: 0.65rem 1.1rem;
   }
 
-  .scrollHint {
+  .marqueeItem {
+    font-size: var(--font-scale-1);
+    letter-spacing: 0.14em;
+  }
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .kicker,
+  .nameBlock,
+  .role,
+  .tagline,
+  .actions,
+  .badge {
+    opacity: 1;
+    animation: none;
+  }
+
+  /* Lanterna é decoração — some; o nome fica na cor base */
+  .nameGlow {
+    display: none;
+  }
+
+  .wash,
+  .openDot::after,
+  .badgeSvg,
+  .badgeCenterUnderscore,
+  .marqueeTrack {
+    animation: none;
+  }
+
+  .marquee {
     display: none;
   }
 }

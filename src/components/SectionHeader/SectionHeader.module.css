@@ -17,7 +17,7 @@
   align-items: baseline;
   gap: 0.55em;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: var(--font-scale-2);
   color: var(--text-muted);
 }
 
@@ -28,7 +28,7 @@
 .index {
   color: var(--accent);
   opacity: 0.75;
-  font-size: 0.72em;
+  font-size: var(--font-scale-1);
 }
 
 .file {
@@ -36,7 +36,7 @@
   align-items: center;
   gap: 0.4em;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--font-scale-1);
   color: var(--text-faint);
   background: var(--surface);
   border: 1px solid var(--border);

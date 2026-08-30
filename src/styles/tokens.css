@@ -4,40 +4,73 @@
    ============================================================ */
 
 :root {
-  color-scheme: dark;
+  color-scheme: dark light;
 
-  /* ---- Cores ---- */
-  --bg: #1a1a2e;            /* primary */
-  --bg-deep: #121223;       /* mais escuro que primary (fundo de detalhes) */
-  --secondary: #4a4a6a;
-  --surface: #22223d;       /* entre #1a1a2e e #2a2a4a */
-  --surface-raised: #2a2a4a;
-  --accent: #e94560;
-  --accent-soft: rgba(233, 69, 96, 0.14);
-  --accent-glow: rgba(233, 69, 96, 0.45);
+  /* ---- Cores — hierarquia semântica (assinatura: 3 cores máx) ---- */
+  --bg: #0d0d17;            /* background principal dark — mais profundo, menos "vibe IA" */
+  --bg-alt: #1a1a2e;        /* alternativa para sections */
+  --surface: #161622;       /* cards, sobreposições — mais "quente" que bg puro */
+  --surface-raised: #1e1e2a;/* cards raised */
+  --surface-light: #fafafa; /* light mode */
 
-  --text: #eceefb;
-  --text-muted: #a2a5cc;
-  --text-faint: #6f729b;
+  /* --- 3 Cores Cromáticas (assinatura própria) --- */
+  --primary: #e94560;       /* accent principal — usada com moderação, como sinal de ação */
+  --primary-soft: rgba(233, 69, 96, 0.14);
+  --primary-glow: rgba(233, 69, 96, 0.45);
+  --primary-hover: #ff6b7b; /* hover state — ligeiramente mais claro */
 
-  --border: rgba(255, 255, 255, 0.09);
-  --border-strong: rgba(255, 255, 255, 0.18);
+  --secondary: #6b6b80;    /* secondary text, borders — cinza-azulado mais neutro */
+  --secondary-soft: rgba(107, 107, 128, 0.14);
 
-  /* ---- Tipografia ---- */
-  --font-display: 'Space Grotesk', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --accent: #4ade80;        /* accent secundário — usado pontualmente (ex: tags, borders) */
+  --accent-soft: rgba(74, 222, 128, 0.14);
+  --accent-glow: rgba(74, 222, 128, 0.45);
+
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --border-light: rgba(0, 0, 0, 0.2);
+
+  /* Texto */
+  --text: #e4e6e7;          /* texto principal */
+  --text-muted: #7f8c8d;    /* texto secundário */
+  --text-faint: #77818c;    /* texto terciário, hints — AA 4.9:1 sobre --bg */
+  --text-inverse: #0d0d17;  /* texto em fundo claro */
+
+  /* ---- Tipografia — 2 famílias expressivas ---- */
+  --font-display: 'Space Grotesk', 'SF Pro Display', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
 
-  /* ---- Espaçamento ---- */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.5rem;
-  --space-6: 2rem;
-  --space-8: 3rem;
-  --space-10: 4rem;
-  --space-12: 5rem;
+  /* Scale: display é expressiva, body é neutra/legível */
+  --font-scale-1: 0.75rem;   /* 12px — labels, captions, meta */
+  --font-scale-2: 0.81rem;   /* 13px — small body, inline */
+  --font-scale-3: 0.87rem;   /* 14px — body compacto */
+  --font-scale-4: 1rem;      /* 16px — body padrão */
+  --font-scale-5: 1.13rem;   /* 18px — body destaque */
+  --font-scale-6: 1.25rem;   /* 20px — title h2/minor */
+  --font-scale-7: 1.5rem;    /* 24px — title h1/section */
+  --font-scale-8: 2rem;      /* 32px — display headline */
+  --font-scale-9: 3rem;      /* 48px — hero headline */
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi: 600;
+  --font-weight-bold: 700;
+
+  /* ---- Espaçamento — escala geométrica 1.2x ---- */
+  --space-1: 0.25rem;   /* 4px  */
+  --space-2: 0.33rem;   /* 5px  */
+  --space-3: 0.5rem;    /* 8px  */
+  --space-4: 0.67rem;   /* 11px */
+  --space-5: 0.88rem;   /* 14px */
+  --space-6: 1rem;      /* 16px */
+  --space-7: 1.33rem;   /* 21px */
+  --space-8: 1.5rem;    /* 24px */
+  --space-9: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-11: 3.33rem;  /* 53px */
+  --space-12: 4rem;     /* 64px */
 
   --section-pad: clamp(4.5rem, 11vw, 7.5rem);
   --container: 72rem;              /* 1152px */
@@ -49,12 +82,15 @@
   --radius-lg: 1rem;
   --radius-full: 999px;
 
-  /* ---- Sombras ---- */
+  /* ---- Sombras — camadas mais refinadas ---- */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4);
   --shadow-accent: 0 0 0 1px var(--accent-soft), 0 10px 30px rgba(233, 69, 96, 0.18);
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 
   /* ---- Movimento ---- */
   --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.0, 0, 0.2, 1);
 }

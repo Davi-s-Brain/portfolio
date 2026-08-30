@@ -2,20 +2,16 @@
    Footer — créditos + redes sociais
    ============================================================ */
 
-import { useLanguage } from '../../i18n'
 import { Icon } from '../Icon'
 import styles from './Footer.module.css'
 
 export default function Footer() {
-  const { t } = useLanguage()
   const year = new Date().getFullYear()
 
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <p className={styles.note}>
-          © {year} Davi Batista — {t.footer.built}
-        </p>
+        <p className={styles.note}>© {year} Davi Batista</p>
 
         <div className={styles.socials}>
           <a

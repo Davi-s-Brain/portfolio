@@ -6,7 +6,7 @@ export const pt = {
   nav: {
     about: 'Sobre',
     experience: 'Experiência',
-    skills: 'Skills',
+    skills: 'Stack',
     projects: 'Projetos',
     contact: 'Contato',
     menuLabel: 'Menu principal',
@@ -19,25 +19,27 @@ export const pt = {
     current: 'Idioma',
   },
   hero: {
-    kicker: "console.log('olá, mundo!')",
+    kicker: '// aberto a oportunidades',
     role: 'IT Analyst — Backend Java',
-    student: 'Estudante de Sistemas de Informação na USP (SP)',
     tagline:
       'Transformo problemas em soluções escaláveis com backend Java, dados e automação. Curioso por natureza, rigoroso por ofício.',
     ctaProjects: 'Ver projetos',
     ctaContact: 'Contato',
     github: 'GitHub',
     githubLabel: 'Perfil no GitHub',
-    terminal: {
-      profile: 'backend java · devops · dados',
-      status: 'it analyst @ f1rst (santander) · usp',
-    },
-    scrollHint: 'explore',
+    ticker: ['backend java', 'devops', 'automação', 'dados', 'react', 'typescript'],
+    metaLocation: 'base',
+    metaFormation: 'estudo',
+    formation: 'USP · Sistemas de Informação',
   },
   about: {
     kicker: 'sobre',
     title: 'Sobre mim',
-    body: 'Estudante de Sistemas de Informação na USP e IT Analyst na F1RST Digital Services (Santander), atuando com backend Java no projeto regulatório de portabilidade de investimentos. Experiência prévia em DevOps no PagBank, com automações que impactaram mais de 500 desenvolvedores, e em desenvolvimento fullstack com React, Node.js e TypeScript no Instituto Taqtile.',
+    body: [
+      'IT Analyst na F1RST Digital Services (Santander), construindo backend Java no projeto regulatório de portabilidade de investimentos.',
+      'Em DevOps no PagBank, automatizei fluxos que impactaram mais de 500 desenvolvedores; no Instituto Taqtile, desenvolvi produtos fullstack com React, Node.js e TypeScript.',
+      'Estudante de Sistemas de Informação na USP (SP).',
+    ],
     currentLabel: '// no momento',
     currentRole: 'IT Analyst — Backend Java',
     currentCompany: 'F1RST Digital Services (Santander)',
@@ -96,9 +98,6 @@ export const pt = {
     githubLabel: 'GitHub',
     locationLabel: 'Localização',
     locationValue: 'São Paulo, SP',
-  },
-  footer: {
-    built: 'Feito com React & Vite',
   },
 }
 

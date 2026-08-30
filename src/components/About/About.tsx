@@ -19,9 +19,16 @@ export default function About() {
         </h2>
 
         <div className={styles.grid}>
-          <p className={styles.body} data-reveal style={{ animationDelay: '120ms' }}>
-            {t.about.body}
-          </p>
+          {t.about.body.map((paragraph, i) => (
+            <p
+              key={i}
+              className={styles.body}
+              data-reveal
+              style={{ animationDelay: `${120 + i * 100}ms` }}
+            >
+              {paragraph}
+            </p>
+          ))}
 
           <aside
             className={styles.panel}
