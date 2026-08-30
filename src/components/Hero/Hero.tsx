@@ -36,11 +36,6 @@ export default function Hero() {
       <div className={styles.content}>
         {/* ====== COLUNA PRINCIPAL — positioning statement ====== */}
         <div className={styles.copy}>
-          <p className={styles.kicker}>
-            <span className={styles.openDot} aria-hidden="true" />
-            {t.hero.kicker}
-          </p>
-
           {/* Nome em escala de pôster, com camada duotone revelada
               pela "lanterna" do cursor (mask nas vars --mx/--my) */}
           <h1 className={styles.name}>

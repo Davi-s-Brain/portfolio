@@ -19,7 +19,6 @@ export const pt = {
     current: 'Idioma',
   },
   hero: {
-    kicker: '// aberto a oportunidades',
     role: 'IT Analyst — Backend Java',
     tagline:
       'Transformo problemas em soluções escaláveis com backend Java, dados e automação. Curioso por natureza, rigoroso por ofício.',
@@ -92,7 +91,7 @@ export const pt = {
   contact: {
     kicker: 'contato',
     title: 'Vamos conversar',
-    intro: 'Estou aberto a oportunidades, colaborações e boas conversas sobre tecnologia.',
+    intro: 'Boas conversas sobre tecnologia, colaborações e novos desafios.',
     emailLabel: 'E-mail',
     linkedinLabel: 'LinkedIn',
     githubLabel: 'GitHub',

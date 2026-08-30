@@ -66,37 +66,6 @@
   min-width: 0;
 }
 
-/* ---- Kicker: disponibilidade ---- */
-.kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
-  font-family: var(--font-mono);
-  font-size: var(--font-scale-2);
-  color: var(--text-muted);
-  margin-bottom: var(--space-5);
-  opacity: 0;
-  animation: rise 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.openDot {
-  position: relative;
-  width: 0.5em;
-  height: 0.5em;
-  border-radius: 50%;
-  background: var(--accent);
-  flex-shrink: 0;
-}
-
-.openDot::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1px solid var(--accent);
-  animation: ring 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-}
-
 /* ---- Wordmark em escala de pôster ---- */
 .name {
   margin-bottom: var(--space-5);
@@ -387,18 +356,6 @@
   }
 }
 
-@keyframes ring {
-  0% {
-    transform: scale(1);
-    opacity: 0.9;
-  }
-  70%,
-  100% {
-    transform: scale(2.4);
-    opacity: 0;
-  }
-}
-
 @keyframes blink {
   50% {
     opacity: 0;
@@ -434,10 +391,6 @@
 }
 
 @media (max-width: 640px) {
-  .kicker {
-    font-size: var(--font-scale-1);
-  }
-
   .btn {
     padding: 0.65rem 1.1rem;
   }
@@ -450,7 +403,6 @@
 
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
-  .kicker,
   .nameBlock,
   .role,
   .tagline,
@@ -466,7 +418,6 @@
   }
 
   .wash,
-  .openDot::after,
   .badgeSvg,
   .badgeCenterUnderscore,
   .marqueeTrack {

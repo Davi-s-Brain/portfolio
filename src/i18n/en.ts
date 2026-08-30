@@ -22,7 +22,6 @@ export const en: Dict = {
     current: 'Language',
   },
   hero: {
-    kicker: '// open to opportunities',
     role: 'IT Analyst — Backend Java',
     tagline:
       'Turning problems into scalable solutions with Java backend, data and automation. Curious by nature, rigorous by craft.',
@@ -96,7 +95,7 @@ export const en: Dict = {
     kicker: 'contact',
     title: 'Let’s talk',
     intro:
-      'I’m open to opportunities, collaborations and good conversations about technology.',
+      'Good conversations about technology, collaborations and new challenges.',
     emailLabel: 'Email',
     linkedinLabel: 'LinkedIn',
     githubLabel: 'GitHub',
